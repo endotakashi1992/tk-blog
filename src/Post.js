@@ -6,17 +6,13 @@ import reactMixin from 'react-mixin';
 
 export default class Post extends Component {
   componentWillMount() {
-    // console.log(this.state)
     let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/${this.props.params.postId}`);
     this.bindAsArray(ref, "post");
     ref.on('value',(snap)=>{
-      let _state = this.state
+      let _state = this.state || {}
       _state.post = snap.val()
       this.setState(_state)
     })
-  }
-  componentDidMount() {
-    console.log()
   }
   render() {
     return (
