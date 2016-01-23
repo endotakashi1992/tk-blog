@@ -7,6 +7,11 @@ import Post from './Post';
 import { createHistory, useBasename } from 'history'
 import { Router, Route, Link, browserHistory,IndexRoute } from 'react-router'
 
+import Firebase from 'firebase'
+import ReactFireMixin from 'reactfire'
+
+
+console.log(Firebase,ReactFireMixin)
 class Index extends Component {
   render() {
     return (
