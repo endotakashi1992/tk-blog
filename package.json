@@ -44,6 +44,7 @@
     "history": "^1.17.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-mixin": "^3.0.3",
     "react-router": "^1.0.3",
     "reactfire": "^0.5.1"
   }
