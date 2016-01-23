@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
 import Post from './Post';
+import Firebase from 'firebase'
+import ReactFireMixin from 'reactfire'
+import reactMixin from 'react-mixin';
 var Link = require('react-router').Link
 
 export default class PostList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {posts:[]};
+  }
   componentWillMount() {
-    this.setState({idLoaded: false})
     let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/`);
-    ref.on('value',(snap)=>{
-      let _state = this.state || {}
-      _state.posts = snap.val()
-      this.setState(_state)
-      this.setState(_state)
-      console.log(this.state)
-    })
+    this.bindAsArray(ref, "posts");
   }
 
   render() {
-    if(this.state.posts){
+    let postList = this.state.posts.map((post)=>{
+      return <h5><Link to={`/posts/${post[".key"]}`}>{post.title}</Link></h5>
+    })
       return (
         <div>
-          hello
+          {postList}
         </div>
       );
-    }
 
   }
 }
+reactMixin(PostList.prototype,ReactFireMixin)
