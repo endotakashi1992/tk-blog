@@ -42,10 +42,12 @@
   "dependencies": {
     "firebase": "^2.4.0",
     "history": "^1.17.0",
+    "material-ui": "^0.14.2",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-mixin": "^3.0.3",
     "react-router": "^1.0.3",
+    "react-tap-event-plugin": "^0.2.1",
     "reactfire": "^0.5.1"
   }
 }

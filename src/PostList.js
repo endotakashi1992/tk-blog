@@ -5,6 +5,10 @@ import ReactFireMixin from 'reactfire'
 import reactMixin from 'react-mixin';
 var Link = require('react-router').Link
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import RaisedButton from 'material-ui/lib/raised-button';
+injectTapEventPlugin();
+
 export default class PostList extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +25,7 @@ export default class PostList extends Component {
     })
       return (
         <div>
+          <RaisedButton/>
           {postList}
         </div>
       );
