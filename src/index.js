@@ -9,10 +9,22 @@ import { Router, Route, Link, browserHistory,IndexRoute } from 'react-router'
 
 import Firebase from 'firebase'
 import ReactFireMixin from 'reactfire'
+
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import {RaisedButton,AppBar} from 'material-ui';
+injectTapEventPlugin();
 class Index extends Component {
   render() {
     return (
       <div>
+        <div>
+          <AppBar
+            title="BlogSystem"
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+          />
+        </div>
+
         {this.props.children}
       </div>
     );

@@ -6,7 +6,7 @@ import reactMixin from 'react-mixin';
 var Link = require('react-router').Link
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import RaisedButton from 'material-ui/lib/raised-button';
+import {RaisedButton,AppBar,Card,CardMedia,CardHeader} from 'material-ui';
 injectTapEventPlugin();
 
 export default class PostList extends Component {
@@ -25,7 +25,16 @@ export default class PostList extends Component {
     })
       return (
         <div>
-          <RaisedButton/>
+          <Card style={{width:"200px"}}>
+
+            <CardMedia>
+              <img src="http://lorempixel.com/600/337/nature/"/>
+            </CardMedia>
+            <CardHeader
+              title="Demo Url Based Avatar"
+              subtitle="Subtitle"
+              avatar="http://lorempixel.com/100/100/nature/"/>
+          </Card>
           {postList}
         </div>
       );
