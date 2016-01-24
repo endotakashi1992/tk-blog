@@ -9,6 +9,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import {RaisedButton,AppBar,Card,CardMedia,CardHeader} from 'material-ui';
 injectTapEventPlugin();
 
+let postListStyle = {
+  width:'400px',
+  margin:'20px'
+}
+
 export default class PostList extends Component {
   constructor(props) {
     super(props);
@@ -21,24 +26,29 @@ export default class PostList extends Component {
 
   render() {
     let postList = this.state.posts.map((post)=>{
-      return <h5><Link to={`/posts/${post[".key"]}`}>{post.title}</Link></h5>
+      return (
+        <Card style={postListStyle}>
+            <CardMedia>
+              <img src={post.image}/>
+            </CardMedia>
+            <Link to={`/posts/${post[".key"]}`}>
+              <CardHeader
+                title={post.title}
+                subtitle={post.headline}
+              />
+            </Link>
+
+          </Card>
+      )
     })
       return (
-        <div>
-          <Card style={{width:"200px"}}>
-
-            <CardMedia>
-              <img src="http://lorempixel.com/600/337/nature/"/>
-            </CardMedia>
-            <CardHeader
-              title="Demo Url Based Avatar"
-              subtitle="Subtitle"
-              avatar="http://lorempixel.com/100/100/nature/"/>
-          </Card>
+        <div style={{display:'flex'}}>
           {postList}
         </div>
       );
 
   }
 }
+
+
 reactMixin(PostList.prototype,ReactFireMixin)
