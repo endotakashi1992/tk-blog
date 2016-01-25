@@ -4,16 +4,20 @@ import { render } from 'react-dom'
 import Home from './Home';
 import PostList from './PostList';
 import Post from './Post';
+import LoginButton from './LoginButton';
 import { createHistory, useBasename } from 'history'
-import { Router, Route, Link, browserHistory,IndexRoute } from 'react-router'
+import { Router, Route, Link, browserHistory,IndexRoute,LeftNav,FlatButton } from 'react-router'
 
 import Firebase from 'firebase'
 import ReactFireMixin from 'reactfire'
 
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {RaisedButton,AppBar} from 'material-ui';
+import {RaisedButton,AppBar,Styles} from 'material-ui';
+
 injectTapEventPlugin();
+
+
 class Index extends Component {
   render() {
     return (
@@ -21,7 +25,7 @@ class Index extends Component {
         <div>
           <AppBar
             title="BlogSystem"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            iconElementRight={<LoginButton />}
           />
         </div>
 

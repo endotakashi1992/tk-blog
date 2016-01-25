@@ -21,6 +21,7 @@ export default class Post extends Component {
   }
   componentWillMount() {
     let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/${this.props.params.postId}`);
+
     this.bindAsObject(ref, "post");
   }
   render() {
