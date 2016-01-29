@@ -15,7 +15,7 @@ export default class Post extends Component {
     ref.onAuth((data)=>{
       if(data){
         this.setState({isLogin:true})
-
+        ref.child("users").child(data.uid).set(data);
       }else{
         this.setState({isLogin:false})
       }
@@ -36,6 +36,9 @@ export default class Post extends Component {
   render() {
     if(this.state.isLogin == false){
       return (
+        <div>
+          <
+        </div>
         <RaisedButton label="LOGIN" onClick={this.handleLogin}>
           <FontIcon className="muidocs-icon-custom-github" />
         </RaisedButton>
