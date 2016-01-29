@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import Firebase from 'firebase'
-import {RaisedButton,AppBar,Card,CardMedia,CardHeader,FontIcon} from 'material-ui';
+import reactMixin from 'react-mixin';
+import ReactFireMixin from 'reactfire'
+
+import {RaisedButton,AppBar,Card,CardMedia,CardHeader,FontIcon,Avatar} from 'material-ui';
 
 let ref = new Firebase(`https://tks-blog.firebaseio.com/`);
 
-export default class Post extends Component {
+export default class LoginButton extends Component {
   constructor(props) {
     super(props);
+
+  }
+  componentWillMount() {
     if(ref.getAuth()){
       this.state = {isLogin:true};
     }else{
@@ -14,8 +20,9 @@ export default class Post extends Component {
     }
     ref.onAuth((data)=>{
       if(data){
-        this.setState({isLogin:true})
+        this.setState({isLogin:true,user:{}})
         ref.child("users").child(data.uid).set(data);
+        this.bindAsObject(ref.child("users").child(data.uid), "user");
       }else{
         this.setState({isLogin:false})
       }
@@ -36,20 +43,20 @@ export default class Post extends Component {
   render() {
     if(this.state.isLogin == false){
       return (
-        <div>
-          <
-        </div>
         <RaisedButton label="LOGIN" onClick={this.handleLogin}>
           <FontIcon className="muidocs-icon-custom-github" />
         </RaisedButton>
       );
     }else{
+      console.log(this.state.user.twitter.cachedUserProfile.profile_image_url)
       return (
-        <RaisedButton label="LOGOUT" onClick={this.handleLogout}>
-          <FontIcon className="muidocs-icon-custom-github" />
-        </RaisedButton>
+          <div>
+            <Avatar src={this.state.user.twitter.cachedUserProfile.profile_image_url} />
+            <RaisedButton label="LOGOUT" onClick={this.handleLogout} />
+          </div>
       );
     }
 
   }
 }
+reactMixin(LoginButton.prototype,ReactFireMixin)
