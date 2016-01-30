@@ -14,6 +14,13 @@ let postListStyle = {
   margin:'20px'
 }
 
+let styles = {
+  container:{
+    display:'flex',
+    'flex-wrap':'wrap'
+  }
+}
+
 export default class PostList extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +49,7 @@ export default class PostList extends Component {
       )
     })
       return (
-        <div style={{display:'flex'}}>
+        <div style={styles.container}>
           {postList}
         </div>
       );
