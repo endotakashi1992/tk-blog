@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Firebase from 'firebase'
 import ReactFireMixin from 'reactfire'
+import TKForm from './Form';
 import reactMixin from 'react-mixin';
 import {RaisedButton,AppBar,Card,CardMedia,CardHeader} from 'material-ui';
 
@@ -28,6 +29,7 @@ export default class Post extends Component {
     return (
       <div style={{display:'flex'}}>
         <Card style={postStyles.card}>
+<TKForm></TKForm>
         <h1>{this.state.post.title}</h1>
         <p><i>{this.state.post.headline}</i></p>
         <div >
