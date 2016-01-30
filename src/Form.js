@@ -11,19 +11,36 @@ let ref = new Firebase(`https://tks-blog.firebaseio.com/`);
 export default class Form extends Component {
   constructor(props) {
       super(props);
-      console.log(this.props.params)
       this.state = {
-        title:""
+        title:"",
+        postId:this.props.params.postId
       };
+      if(this.props.params.postId){
+        ref.child(`posts/${this.props.params.postId}`).on('value',(snap)=>{
+          let _state = Object.assign(this.state,snap.val())
+          this.setState(_state)
+        })
+      }
+
+
   }
   handleCreate() {
-      let new_post = ref.child('posts').push()
-      new_post.set(this.state,(e,data)=>{
-        window.location.assign(`/#/posts/${new_post.key()}`);
+    if(this.state.postId){
+      let post = ref.child(`posts/${this.state.postId}`)
+      post.set(this.state,()=>{
+        window.location.assign(`/#/posts/${this.state.postId}`);
       })
+    }else{
+      let new_post = ref.child('posts').push()
+      let postId = new_post.key()
+      new_post.set(this.state,(e,data)=>{
+        window.location.assign(`/#/posts/${postId}`);
+      })
+    }
+
   }
   handleDelete() {
-    ref.child(`posts/${this.state[".key"]}`).remove()
+    ref.child(`posts/${this.state.postId}`).remove()
     window.location.assign(`/#/posts/`);
   }
   render() {
@@ -36,7 +53,7 @@ export default class Form extends Component {
             <TextField hintText="body" valueLink={this.linkState('body')}/><br />
           </CardText>
           <CardActions>
-            <FlatButton label="Create" onClick={this.handleCreate.bind(this)}/>
+            <FlatButton label="Save" onClick={this.handleCreate.bind(this)}/>
             <FlatButton label="Delete" onClick={this.handleDelete.bind(this)}/>
           </CardActions>
         </Card>

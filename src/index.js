@@ -40,6 +40,7 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={Index}>
       <Route path="/posts/new" component={TKForm}/>
+      <Route path="/posts/:postId/edit" component={TKForm}/>
       <Route path="/posts/:postId" component={Post}/>
 
       <Route path="/posts" component={PostList}/>
