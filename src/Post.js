@@ -29,7 +29,6 @@ export default class Post extends Component {
     return (
       <div style={{display:'flex'}}>
         <Card style={postStyles.card}>
-<TKForm></TKForm>
         <h1>{this.state.post.title}</h1>
         <p><i>{this.state.post.headline}</i></p>
         <div >
