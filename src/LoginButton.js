@@ -48,7 +48,6 @@ export default class LoginButton extends Component {
         </RaisedButton>
       );
     }else{
-      console.log(this.state.user.twitter.cachedUserProfile.profile_image_url)
       return (
           <div>
             <Avatar src={this.state.user.twitter.cachedUserProfile.profile_image_url} />
@@ -56,7 +55,6 @@ export default class LoginButton extends Component {
           </div>
       );
     }
-
   }
 }
 reactMixin(LoginButton.prototype,ReactFireMixin)
