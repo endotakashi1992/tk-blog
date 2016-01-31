@@ -42,6 +42,7 @@ export default class PostList extends Component {
               <CardHeader
                 title={post.title}
                 subtitle={post.headline}
+                avatar="http://lorempixel.com/100/100/nature/"
               />
             </Link>
 
