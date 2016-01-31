@@ -3,15 +3,14 @@ import Post from './Post';
 import Firebase from 'firebase'
 import ReactFireMixin from 'reactfire'
 import reactMixin from 'react-mixin';
-var Link = require('react-router').Link
+import { Link } from 'react-router'
+let ReactRouter = require('react-router')
+console.log(ReactRouter)
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions} from 'material-ui';
+import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions,FlatButton} from 'material-ui';
 injectTapEventPlugin();
 
-let postListStyle = {
-
-}
 
 let styles = {
   container:{
@@ -36,6 +35,10 @@ export default class PostList extends Component {
     let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/`);
     this.bindAsArray(ref, "posts");
   }
+  handleReadMore(e) {
+    console.log(e)
+    // window.location.assign(`/#/posts/`);
+  }
 
   render() {
     let postList = this.state.posts.map((post)=>{
@@ -44,14 +47,16 @@ export default class PostList extends Component {
             <CardMedia>
               <img src={post.image}/>
             </CardMedia>
-            <Link to={`/posts/${post[".key"]}`}>
               <CardTitle
                 title={post.title}
                 subtitle={post.headline}
                 avatar="http://lorempixel.com/100/100/nature/"
               />
-            </Link>
-
+            <CardActions>
+              <Link to={`/posts/${post[".key"]}`}>
+              <FlatButton label="READ MORE" onClick={this.handleReadMore.bind(this)}/>
+              </Link>
+            </CardActions>
           </Card>
       )
     })
