@@ -5,11 +5,13 @@ import ReactFireMixin from 'reactfire'
 import reactMixin from 'react-mixin';
 import { Link } from 'react-router'
 let ReactRouter = require('react-router')
-console.log(ReactRouter)
+
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions,FlatButton,Avatar} from 'material-ui';
+import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions,FlatButton,Avatar,FloatingActionButton} from 'material-ui';
 injectTapEventPlugin();
+
+let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/`);
 
 
 let styles = {
@@ -32,13 +34,13 @@ export default class PostList extends Component {
   }
   constructor(props) {
     super(props);
-    console.log(this.props.history)
-    // this.props.history.transitionTo('posts/1/edit')
 
-    this.state = {posts:[]};
+    this.state = {posts:[],loading:true};
   }
   componentWillMount() {
-    let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/`);
+    ref.on('value',()=>{
+      this.setState({loading:false})
+    })
     this.bindAsArray(ref, "posts");
   }
   handleReadMore(e) {
@@ -46,6 +48,19 @@ export default class PostList extends Component {
 
   render() {
     let postList = this.state.posts.map((post)=>{
+     if(this.state.loading){
+       return;
+     }
+     let switchEditButton = <p></p>;
+    // if(true){
+    if(ref.getAuth().uid === post.autor.uid){
+      switchEditButton = (
+        <Link to={`/posts/${post[".key"]}/edit`}>
+          <FlatButton label="EDIT" onClick={this.handleReadMore.bind(this)}/>
+        </Link>
+      );
+    }
+
       return (
         <Card style={styles.postCard}>
             <CardMedia>
@@ -59,9 +74,7 @@ export default class PostList extends Component {
               <Link to={`/posts/${post[".key"]}`}>
               <FlatButton label="MORE" onClick={this.handleReadMore.bind(this)}/>
               </Link>
-              <Link to={`/posts/${post[".key"]}/edit`}>
-              <FlatButton label="EDIT" onClick={this.handleReadMore.bind(this)}/>
-              </Link>
+              {switchEditButton}
             </CardActions>
           </Card>
       )
@@ -69,6 +82,7 @@ export default class PostList extends Component {
       return (
         <div style={styles.container}>
           {postList}
+          <FloatingActionButton></FloatingActionButton>
         </div>
       );
 
