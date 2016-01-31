@@ -8,7 +8,7 @@ let ReactRouter = require('react-router')
 console.log(ReactRouter)
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions,FlatButton} from 'material-ui';
+import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions,FlatButton,Avatar} from 'material-ui';
 injectTapEventPlugin();
 
 
@@ -27,8 +27,14 @@ let styles = {
 }
 
 export default class PostList extends Component {
+  contextTypes() {
+    router: React.PropTypes.func.isRequired
+  }
   constructor(props) {
     super(props);
+    console.log(this.props.history)
+    // this.props.history.transitionTo('posts/1/edit')
+
     this.state = {posts:[]};
   }
   componentWillMount() {
@@ -36,8 +42,6 @@ export default class PostList extends Component {
     this.bindAsArray(ref, "posts");
   }
   handleReadMore(e) {
-    console.log(e)
-    // window.location.assign(`/#/posts/`);
   }
 
   render() {
@@ -50,11 +54,13 @@ export default class PostList extends Component {
               <CardTitle
                 title={post.title}
                 subtitle={post.headline}
-                avatar="http://lorempixel.com/100/100/nature/"
               />
             <CardActions>
               <Link to={`/posts/${post[".key"]}`}>
-              <FlatButton label="READ MORE" onClick={this.handleReadMore.bind(this)}/>
+              <FlatButton label="MORE" onClick={this.handleReadMore.bind(this)}/>
+              </Link>
+              <Link to={`/posts/${post[".key"]}/edit`}>
+              <FlatButton label="EDIT" onClick={this.handleReadMore.bind(this)}/>
               </Link>
             </CardActions>
           </Card>
