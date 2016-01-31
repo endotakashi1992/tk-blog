@@ -6,18 +6,24 @@ import reactMixin from 'react-mixin';
 var Link = require('react-router').Link
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {RaisedButton,AppBar,Card,CardMedia,CardHeader} from 'material-ui';
+import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions} from 'material-ui';
 injectTapEventPlugin();
 
 let postListStyle = {
-  width:'400px',
-  margin:'20px'
+
 }
 
 let styles = {
   container:{
     display:'flex',
-    'flex-wrap':'wrap'
+    'flex-wrap':'wrap',
+    'justify-content': 'center',
+    'align-items': 'center'
+  },
+  postCard:{
+    overflow:'visible',
+    width:'400px',
+    margin:'20px'
   }
 }
 
@@ -34,12 +40,12 @@ export default class PostList extends Component {
   render() {
     let postList = this.state.posts.map((post)=>{
       return (
-        <Card style={postListStyle}>
+        <Card style={styles.postCard}>
             <CardMedia>
               <img src={post.image}/>
             </CardMedia>
             <Link to={`/posts/${post[".key"]}`}>
-              <CardHeader
+              <CardTitle
                 title={post.title}
                 subtitle={post.headline}
                 avatar="http://lorempixel.com/100/100/nature/"
