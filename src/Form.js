@@ -12,8 +12,6 @@ export default class Form extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        title:"",
-        postId:this.props.params.postId
       };
       if(this.props.params.postId){
         ref.child(`posts/${this.props.params.postId}`).on('value',(snap)=>{
@@ -25,7 +23,7 @@ export default class Form extends Component {
 
   }
   handleCreate() {
-    if(this.state.postId){
+    if(this.props.postId){
       let post = ref.child(`posts/${this.state.postId}`)
       post.set(this.state,()=>{
         window.location.assign(`/#/posts/${this.state.postId}`);
@@ -33,6 +31,11 @@ export default class Form extends Component {
     }else{
       let new_post = ref.child('posts').push()
       let postId = new_post.key()
+      this.state.autor = {
+        uid:ref.getAuth().uid,
+        name:ref.getAuth().twitter.username,
+        image:ref.getAuth().twitter.profileImageURL
+      }
       new_post.set(this.state,(e,data)=>{
         window.location.assign(`/#/posts/${postId}`);
       })
