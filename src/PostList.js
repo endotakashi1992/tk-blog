@@ -5,9 +5,9 @@ import ReactFireMixin from 'reactfire'
 import reactMixin from 'react-mixin';
 var Link = require('react-router').Link
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import {RaisedButton,AppBar,Card,CardMedia,CardHeader} from 'material-ui';
-injectTapEventPlugin();
+
 
 let postListStyle = {
   width:'400px',
