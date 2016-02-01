@@ -25,6 +25,9 @@ let styleContainer = {
     margin:0,
     height:'100px',
     width:'100px'
+  },
+  button:{
+    mergin:'0 auto'
   }
 }
 
@@ -42,7 +45,7 @@ export default class Post extends Component {
     return (
       <div style={styleContainer.container}>
       <Card style={styleContainer.card}>
-      <CardTitle title="Please Login" />
+      <CardTitle style={styleContainer.button} title="Please Login" />
         <LoginButton />
       </Card>
       </div>

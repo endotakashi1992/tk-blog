@@ -48,7 +48,7 @@ export default class LoginButton extends Component {
   render() {
     if(this.state.isLogin == false){
       return (
-        <RaisedButton label="LOGIN" onClick={this.handleLogin.bind(this)}>
+        <RaisedButton label="LOGIN" onClick={this.handleLogin.bind(this)} secondary={true}>
           <FontIcon className="muidocs-icon-custom-github" />
         </RaisedButton>
       );
