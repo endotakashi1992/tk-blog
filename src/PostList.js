@@ -48,6 +48,9 @@ export default class PostList extends Component {
       this.setState({loading:false})
     })
     this.bindAsArray(ref, "posts");
+    if(!ref.getAuth()){
+      window.location.assign(`/#/login`);
+    }
   }
   handleReadMore(e) {
   }

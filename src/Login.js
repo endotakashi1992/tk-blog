@@ -42,7 +42,7 @@ export default class Post extends Component {
     return (
       <div style={styleContainer.container}>
       <Card style={styleContainer.card}>
-      <CardTitle title="Please Login" subtitle="this blog is secret.if you want to visit,Do login now." />
+      <CardTitle title="Please Login" />
         <LoginButton />
       </Card>
       </div>
