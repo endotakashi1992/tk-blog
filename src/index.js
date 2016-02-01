@@ -7,14 +7,17 @@ import Post from './Post';
 import TKForm from './Form';
 import LoginButton from './LoginButton';
 import { createHistory, useBasename } from 'history'
-import { Router, Route, Link, browserHistory,IndexRoute,LeftNav,FlatButton } from 'react-router'
+import { Router, Route, Link, browserHistory,IndexRoute} from 'react-router'
 
 import Firebase from 'firebase'
 import ReactFireMixin from 'reactfire'
 
+import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
+
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {RaisedButton,AppBar,Styles} from 'material-ui';
+import {RaisedButton,AppBar,Styles,IconButton} from 'material-ui';
+import FlatButton from 'material-ui/lib/flat-button';
 
 injectTapEventPlugin();
 
@@ -26,6 +29,7 @@ class Index extends Component {
         <div>
           <AppBar
             title="BlogSystem"
+            iconElementLeft={<IconButton><NavigationClose /></IconButton>}
             iconElementRight={<LoginButton />}
           />
         </div>
