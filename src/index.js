@@ -5,6 +5,7 @@ import Home from './Home';
 import PostList from './PostList';
 import Post from './Post';
 import Login from './Login';
+import UserAvatar from './UserAvatar';
 import TKForm from './Form';
 import LoginButton from './LoginButton';
 import { createHistory, useBasename } from 'history'
@@ -22,6 +23,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 injectTapEventPlugin();
 
+let ref = new Firebase(`https://tks-blog.firebaseio.com/`);
 
 class Index extends Component {
   render() {
@@ -31,7 +33,7 @@ class Index extends Component {
           <AppBar
             title="BlogSystem"
             iconElementLeft={<Link to="/" ><IconButton><NavigationClose /></IconButton></Link>}
-            iconElementRight={<Avatar src="https://pbs.twimg.com/profile_images/683724768663605248/eh-D6Zy0_normal.jpg" />}
+            iconElementRight={<UserAvatar />}
             style={{ margin: 0 }}
           />
         </div>

@@ -30,6 +30,8 @@ export default class LoginButton extends Component {
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:", data);
+        data.image = data.twitter.profileImageURL
+        data.name = data.twitter.username
         ref.child("users").child(data.uid).set(data,()=>{
           ref.child("users").child(data.uid).on('value',()=>{
             this.setState({isLogin:true})
