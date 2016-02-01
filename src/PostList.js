@@ -7,9 +7,9 @@ import { Link } from 'react-router'
 let ReactRouter = require('react-router')
 
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import {FontIcon,IconButton,RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions,FlatButton,Avatar,FloatingActionButton} from 'material-ui';
-injectTapEventPlugin();
+
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 
 let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/`);
