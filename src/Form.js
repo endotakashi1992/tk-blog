@@ -50,8 +50,8 @@ export default class Form extends Component {
 
   }
   handleDelete() {
-    ref.child(`posts/${this.state.postId}`).remove()
-    window.location.assign(`/#/posts/`);
+    ref.child(`posts/${this.props.params.postId}`).remove()
+    window.location.assign(`/#/`)
   }
   render() {
     return (
