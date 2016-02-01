@@ -21,6 +21,8 @@ export default class Form extends Component {
       this.setState({edit:true})
       ref.child(`posts/${this.props.params.postId}`).on('value',(snap)=>{
         let _state = Object.assign(this.state,snap.val())
+        _state.edit = true
+        console.log(_state)
         this.setState(_state)
       })
     }
