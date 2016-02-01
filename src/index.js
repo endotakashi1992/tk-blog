@@ -12,7 +12,7 @@ import { Router, Route, Link, browserHistory,IndexRoute} from 'react-router'
 import Firebase from 'firebase'
 import ReactFireMixin from 'reactfire'
 
-import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
+import NavigationClose from 'material-ui/lib/svg-icons/navigation/chevron-left';
 
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -29,7 +29,7 @@ class Index extends Component {
         <div>
           <AppBar
             title="BlogSystem"
-            iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+            iconElementLeft={<Link to="/" ><IconButton><NavigationClose /></IconButton></Link>}
             iconElementRight={<LoginButton />}
           />
         </div>
