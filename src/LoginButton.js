@@ -16,21 +16,11 @@ export default class LoginButton extends Component {
   }
   componentWillMount() {
     if(ref.getAuth()){
-      console.log(ref.getAuth())
       this.bindAsObject(ref.child("users").child(ref.getAuth().uid), "user");
       ref.child("users").child(ref.getAuth().uid).on('value',()=>{
         this.setState({isLogin:true})
       })
     }else{
-      // this.setState({isLogin:false})
-      // ref.onAuth((data)=>{
-      //   if(data){
-      //     this.setState({isLogin:true})
-      //     ref.child("users").child(data.uid).set(data);
-      //   }else{
-      //     this.setState({isLogin:false})
-      //   }
-      // })
     }
 
   }
