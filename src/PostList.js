@@ -30,7 +30,7 @@ let styles = {
     position: 'fixed',
     bottom: '20px', /* Adjust to where you want it */
     right: '20px', /* Adjust to where you want it */
-    'z-index': '999999999999999999999'
+    'zIndex': '999999999999999999999'
   }
 }
 
