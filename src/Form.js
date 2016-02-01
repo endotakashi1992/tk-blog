@@ -12,15 +12,18 @@ export default class Form extends Component {
   constructor(props) {
       super(props);
       this.state = {
+        edit:false,
+        post:{}
       };
-      if(this.props.params.postId){
-        ref.child(`posts/${this.props.params.postId}`).on('value',(snap)=>{
-          let _state = Object.assign(this.state,snap.val())
-          this.setState(_state)
-        })
-      }
-
-
+  }
+  componentDidMount() {
+    if(this.props.params.postId){
+      this.setState({edit:true})
+      ref.child(`posts/${this.props.params.postId}`).on('value',(snap)=>{
+        let _state = Object.assign(this.state,snap.val())
+        this.setState(_state)
+      })
+    }
   }
   handleCreate() {
     if(this.state.title && this.state.headline && this.state.body){
@@ -29,7 +32,8 @@ export default class Form extends Component {
       this.setState({open:true})
       return;
     }
-    if(this.props.postId){
+
+    if(this.state.edit){
       let post = ref.child(`posts/${this.state.postId}`)
       post.set(this.state,()=>{
         window.location.assign(`/#/posts/${this.state.postId}`);
@@ -47,11 +51,12 @@ export default class Form extends Component {
         window.location.assign(`/#/posts/${postId}`);
       })
     }
-
   }
   handleDelete() {
     ref.child(`posts/${this.props.params.postId}`).remove()
-    window.location.assign(`/#/`)
+    setTimeout(()=>{
+      window.location.assign(`/#/`)
+    },500)
   }
   render() {
     return (
