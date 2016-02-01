@@ -31,6 +31,7 @@ class Index extends Component {
             title="BlogSystem"
             iconElementLeft={<Link to="/" ><IconButton><NavigationClose /></IconButton></Link>}
             iconElementRight={<LoginButton />}
+            style={{ margin: 0 }}
           />
         </div>
 
