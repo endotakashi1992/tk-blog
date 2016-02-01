@@ -17,6 +17,7 @@ export default class Form extends Component {
       };
   }
   componentDidMount() {
+    console.log(this.props.params.postId)
     if(this.props.params.postId){
       this.setState({edit:true})
       ref.child(`posts/${this.props.params.postId}`).on('value',(snap)=>{
@@ -36,9 +37,9 @@ export default class Form extends Component {
     }
 
     if(this.state.edit){
-      let post = ref.child(`posts/${this.state.postId}`)
+      let post = ref.child(`posts/${this.props.params.postId}`)
       post.set(this.state,()=>{
-        window.location.assign(`/#/posts/${this.state.postId}`);
+        window.location.assign(`/#/posts/${this.props.params.postId}`);
       })
     }else{
       let new_post = ref.child('posts').push()
