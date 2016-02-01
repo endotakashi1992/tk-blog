@@ -49,7 +49,7 @@ export default class PostList extends Component {
     })
     this.bindAsArray(ref, "posts");
     if(!ref.getAuth()){
-      window.location.assign(`/#/login`);
+      this.props.history.replace(`/login`);
     }
   }
   handleReadMore(e) {

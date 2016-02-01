@@ -1,4 +1,13 @@
 # ブログシステム
+
+```
+npm i
+npm start
+open http://localhost:3000
+
+git checkout phase-1 //phase-2,phase-3...
+```
+
 ## フェーズ０:環境
 - webpack
 - react

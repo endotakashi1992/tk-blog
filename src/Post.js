@@ -26,6 +26,7 @@ export default class Post extends Component {
     this.state = {post:{},loading:true};
   }
   componentWillMount() {
+    console.log(this.props)
     let ref = new Firebase(`https://tks-blog.firebaseio.com/posts/${this.props.params.postId}`);
     ref.on('value',()=>{
       this.setState({loading:false})
@@ -50,7 +51,6 @@ export default class Post extends Component {
         </div>
       );
     }
-    console.log(this.state.post.autor.image)
 
   }
 }

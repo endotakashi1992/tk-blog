@@ -39,7 +39,7 @@ export default class Form extends Component {
     if(this.state.edit){
       let post = ref.child(`posts/${this.props.params.postId}`)
       post.set(this.state,()=>{
-        window.location.assign(`/#/posts/${this.props.params.postId}`);
+        this.props.history.replace(`/posts/${this.props.params.postId}`);
       })
     }else{
       let new_post = ref.child('posts').push()
@@ -51,14 +51,14 @@ export default class Form extends Component {
       }
       this.state.image = 'http://www.oradoko.jp/shop/images/noimage.jpg'
       new_post.set(this.state,(e,data)=>{
-        window.location.assign(`/#/posts/${postId}`);
+        this.props.history.replace(`/posts/${postId}`);
       })
     }
   }
   handleDelete() {
     ref.child(`posts/${this.props.params.postId}`).remove()
     setTimeout(()=>{
-      window.location.assign(`/#/`)
+      this.props.history.replace(`/`)
     },500)
   }
   render() {

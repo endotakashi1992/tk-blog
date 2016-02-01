@@ -37,7 +37,7 @@ export default class Post extends Component {
     this.state = {post:{},loading:true};
     ref.onAuth((data)=>{
       if(data){
-        window.location.assign(`/`);
+        this.props.history.replace(`/`);
       }
     })
   }
