@@ -7,9 +7,9 @@ import { Link } from 'react-router'
 let ReactRouter = require('react-router')
 console.log(ReactRouter)
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import {RaisedButton,AppBar,Card,CardMedia,CardTitle,CardActions,FlatButton,Avatar} from 'material-ui';
-injectTapEventPlugin();
+
 
 
 let styles = {
