@@ -22,7 +22,7 @@ export default class LoginButton extends Component {
       if(data){
         this.setState({isLogin:true,user:{}})
         ref.child("users").child(data.uid).set(data);
-        this.bindAsObject(ref.child("users").child(data.uid), "user");
+      this.bindAsObject(ref.child("users").child(data.uid), "user");
       }else{
         this.setState({isLogin:false})
       }
@@ -50,7 +50,7 @@ export default class LoginButton extends Component {
     }else{
       return (
           <div>
-            <Avatar src={this.state.user.twitter.cachedUserProfile.profile_image_url} />
+            <Avatar src={this.state.user.twitter.profileImageURL} />
             <RaisedButton label="LOGOUT" onClick={this.handleLogout} />
           </div>
       );
