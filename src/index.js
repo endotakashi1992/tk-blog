@@ -48,7 +48,7 @@ render((
       <Route path="/posts/:postId" component={Post}/>
 
       <Route path="/posts" component={PostList}/>
-      <IndexRoute component={Home}/>
+      <IndexRoute component={PostList}/>
     </Route>
   </Router>
 ), document.getElementById('root'))
