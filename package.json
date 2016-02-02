@@ -40,6 +40,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "filepicker-js": "^2.4.0",
     "firebase": "^2.4.0",
     "history": "^1.17.0",
     "material-design-icons": "^2.1.3",
