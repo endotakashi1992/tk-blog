@@ -1,0 +1,9 @@
+{
+  "firebase": "tks-blog",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
